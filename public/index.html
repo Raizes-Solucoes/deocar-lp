@@ -81,19 +81,21 @@
     /* SEARCH DRAWER */
     #search-drawer {
         position: fixed; top: 80px; left: 0; width: 100%; z-index: 45;
-        background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(20px);
+        background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(40px);
         border-bottom: 1px solid rgba(255,255,255,0.05);
         height: 0; overflow: hidden; opacity: 0;
-        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    #search-drawer.active { height: auto; opacity: 1; padding: 40px 0; }
+    #search-drawer.active { height: auto; opacity: 1; padding: 60px 0; }
     .search-input { 
-        background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); 
-        padding: 1rem; color: #fff; font-size: 0.8rem; outline: none; width: 100%;
+        background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); 
+        padding: 1.2rem; color: #fff; font-size: 0.75rem; outline: none; width: 100%;
         appearance: none; -webkit-appearance: none; border-radius: 0;
+        transition: all 0.3s ease;
     }
-    .search-input:focus { border-color: var(--blue); }
-    .search-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #666; margin-bottom: 12px; display: block; }
+    .search-input:focus { border-color: var(--blue); background: rgba(255,255,255,0.05); }
+    .search-input option { background: #111; color: #fff; padding: 10px; }
+    .search-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(255,255,255,0.3); margin-bottom: 14px; display: block; }
 </style>
 </head>
 <body>
@@ -128,20 +130,21 @@
 </nav>
 <!-- SEARCH DRAWER -->
 <div id="search-drawer">
-    <div class="max-w-7xl mx-auto px-10">
-        <div class="flex flex-col md:flex-row gap-8 items-end">
-            <div class="flex-1 w-full">
+    <div class="max-w-5xl mx-auto px-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 items-end">
+            <div class="w-full">
                 <span class="search-label">Segmento</span>
                 <select class="search-input">
+                    <option value="" disabled selected>Selecionar</option>
                     <option>Automóveis</option>
                     <option>Motocicletas</option>
                     <option>Blindados</option>
                 </select>
             </div>
-            <div class="flex-1 w-full">
+            <div class="w-full">
                 <span class="search-label">Marcas</span>
                 <select class="search-input">
-                    <option>Todas as Marcas</option>
+                    <option value="" disabled selected>Selecionar</option>
                     <option>Porsche</option>
                     <option>Ferrari</option>
                     <option>Land Rover</option>
@@ -149,9 +152,10 @@
                     <option>Audi</option>
                 </select>
             </div>
-            <div class="flex-1 w-full">
+            <div class="w-full">
                 <span class="search-label">Modelos</span>
                 <select class="search-input">
+                    <option value="" disabled selected>Selecionar</option>
                     <option>Todos os Modelos</option>
                     <option>911 Carrera</option>
                     <option>Cayenne</option>
@@ -159,7 +163,9 @@
                     <option>Range Rover Velar</option>
                 </select>
             </div>
-            <button onclick="toggleSearch()" class="btn-pri !py-4 whitespace-nowrap">Buscar Veículos</button>
+            <div class="w-full">
+                <button onclick="toggleSearch()" class="btn-pri w-full !py-4 opacity-90 hover:opacity-100">Filtrar</button>
+            </div>
         </div>
     </div>
 </div>
