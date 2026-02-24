@@ -5,258 +5,388 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deocar Veículos | Premium Multimarcas · Belo Horizonte</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#050505;color:#fff;overflow-x:hidden}
-.serif{font-family:'Playfair Display',serif}
-.glass{background:rgba(5,5,5,.82);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
-.shimmer{background:linear-gradient(90deg,#fff 0%,#888 40%,#fff 80%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shim 4s linear infinite}
-@keyframes shim{to{background-position:200% center}}
-.hero-img{position:absolute;inset:0;background:url('https://www.deocar.com.br/public/upload/img/inicio-43.jpg?v=30032022092016') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.4) 0%,rgba(5,5,5,.65) 60%,rgba(5,5,5,1) 100%)}
-.car-card .thumb{overflow:hidden;aspect-ratio:16/10;position:relative}
-.car-card .thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(60%) brightness(.9);transform:scale(1.04);transition:filter .6s ease,transform .7s ease}
-.car-card:hover .thumb img{filter:grayscale(0%) brightness(1);transform:scale(1.1)}
-.hover-bar{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(5,5,5,.9),transparent);height:55%;transform:translateY(100%);transition:transform .35s ease;display:flex;align-items:flex-end;padding:14px}
-.car-card:hover .hover-bar{transform:translateY(0)}
-.badge{display:inline-block;padding:2px 10px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-.mtrack{display:flex;gap:60px;animation:mq 24s linear infinite;white-space:nowrap}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.btn-pri{display:inline-block;background:#2563eb;color:#fff;padding:.9rem 2.5rem;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:background .2s;position:relative;overflow:hidden}
-.btn-pri:hover{background:#1d4ed8}
-.btn-sec{display:inline-block;border:1px solid rgba(255,255,255,0.15);color:#fff;padding:.9rem 2.5rem;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:all .2s}
-.btn-sec:hover{background:#fff;color:#050505}
-.wa{position:fixed;bottom:28px;right:28px;z-index:999;background:#25D366;border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(37,211,102,.4);animation:wpulse 2.5s ease-in-out infinite;text-decoration:none}
-@keyframes wpulse{0%,100%{box-shadow:0 8px 32px rgba(37,211,102,.4)}50%{box-shadow:0 8px 48px rgba(37,211,102,0.65),0 0 0 12px rgba(37,211,102,.07)}}
-.page-section{display:none;min-height:80vh;padding-top:100px}
-.page-section.active{display:block}
-.nav-link.active{color:#2563eb;opacity:1}
-.nav-link.active::after{width:100%}
-.ul-h{position:relative}
-.ul-h::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#2563eb;transition:width .4s ease}
-.brand-pill{border:1px solid rgba(255,255,255,0.08);padding:10px 20px;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .2s;color:rgba(255,255,255,.4)}
-.brand-pill:hover,.brand-pill.active{border-color:#2563eb;color:#fff;background:rgba(37,99,235,0.15)}
+    :root { --blue: #2563eb; --bg: #030303; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    .serif { font-family: 'Playfair Display', serif; }
+    
+    /* Typography Overrides */
+    h1, h2 { letter-spacing: -0.02em; }
+    .tracking-ultra { letter-spacing: 0.4em; }
+
+    /* Premium Elements */
+    .glass { background: rgba(3, 3, 3, 0.75); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
+    .shimmer { 
+        background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.4) 50%, #fff 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shim 5s linear infinite;
+    }
+    @keyframes shim { to { background-position: 200% center; } }
+
+    /* Transitions & Animations */
+    .page-section { display: none; }
+    .page-section.active { display: block; animation: fadeIn 0.8s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Components */
+    .hero-img { position: absolute; inset: 0; background: url('https://www.deocar.com.br/public/upload/img/inicio-43.jpg?v=30032022092016') center/cover no-repeat; filter: brightness(0.7); }
+    .hero-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(3,3,3,0) 0%, rgba(3,3,3,0.8) 70%, var(--bg) 100%); }
+    
+    .car-card .thumb { overflow: hidden; aspect-ratio: 16/10; position: relative; background: #111; }
+    .car-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease; filter: grayscale(100%) brightness(0.8); }
+    .car-card:hover img { transform: scale(1.08); filter: grayscale(0%) brightness(1); }
+    
+    .btn-pri { 
+        padding: 1.2rem 3rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em;
+        background: var(--blue); color: #fff; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid var(--blue);
+    }
+    .btn-pri:hover { background: transparent; color: var(--blue); transform: translateY(-2px); }
+    
+    .btn-outline { 
+        padding: 1.2rem 3rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em;
+        border: 1px solid rgba(255,255,255,0.1); color: #fff; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-outline:hover { background: #fff; color: #000; border-color: #fff; transform: translateY(-2px); }
+
+    .nav-link { position: relative; opacity: 0.5; transition: opacity 0.4s; }
+    .nav-link:hover, .nav-link.active { opacity: 1; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--blue); transition: width 0.4s; }
+    .nav-link.active::after { width: 100%; }
+
+    /* Brand Marquee */
+    .marquee { display: flex; overflow: hidden; gap: 4rem; user-select: none; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .marquee-content { display: flex; gap: 4rem; animation: scroll 40s linear infinite; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+    .wa-float { position: fixed; bottom: 40px; right: 40px; z-index: 100; background: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(37,211,102,0.3); transition: transform 0.3s; }
+    .wa-float:hover { transform: scale(1.1) rotate(5deg); }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="fixed top-0 w-full z-50 glass flex justify-between items-center px-6 md:px-10 py-4">
-  <a href="javascript:showPage('home')" class="h-8"><img src="images/logo.webp" alt="Deocar 1989" class="h-full object-contain brightness-110"></a>
-  <div class="hidden md:flex gap-7 text-[11px] font-semibold tracking-[.18em] uppercase">
-    <a href="javascript:showPage('home')" class="nav-link ul-h opacity-60 hover:opacity-100 transition active" id="link-home">Início</a>
-    <a href="javascript:showPage('vender')" class="nav-link ul-h opacity-60 hover:opacity-100 transition" id="link-vender">Vender</a>
-    <a href="javascript:showPage('financiamento')" class="nav-link ul-h opacity-60 hover:opacity-100 transition" id="link-financiamento">Financiamento</a>
-    <a href="javascript:showPage('blindagem')" class="nav-link ul-h opacity-60 hover:opacity-100 transition" id="link-blindagem">Blindagem</a>
-    <a href="javascript:showPage('sobre-page')" class="nav-link ul-h opacity-60 hover:opacity-100 transition" id="link-sobre-page">Sobre</a>
-  </div>
-  <a href="https://wa.me/5531995747309" target="_blank" class="btn-pri !py-2 !px-6 text-[10px]">WhatsApp</a>
+<!-- NAVIGATION -->
+<nav class="fixed top-0 w-full z-50 glass py-6 px-10 flex justify-between items-center">
+    <a href="javascript:showPage('home')" class="h-6">
+        <img src="images/logo.webp" alt="Deocar" class="h-full object-contain">
+    </a>
+    <div class="hidden lg:flex gap-10 text-[10px] font-bold tracking-[0.2em] uppercase">
+        <a href="javascript:showPage('home')" class="nav-link active" id="link-home">Início</a>
+        <a href="javascript:showPage('home','#estoque')" class="nav-link">Estoque</a>
+        <a href="javascript:showPage('vender')" class="nav-link" id="link-vender">Vender</a>
+        <a href="javascript:showPage('blindagem')" class="nav-link" id="link-blindagem">Blindagem</a>
+        <a href="javascript:showPage('sobre')" class="nav-link" id="link-sobre">A Empresa</a>
+    </div>
+    <div class="flex items-center gap-6">
+        <a href="tel:3125559025" class="hidden sm:block text-[10px] font-bold tracking-widest text-gray-400 hover:text-white transition">31 2555.9025</a>
+        <a href="https://wa.me/5531995747309" class="text-[10px] font-bold tracking-widest text-blue-500 hover:text-blue-400 transition uppercase">WhatsApp</a>
+    </div>
 </nav>
 
-<!-- SECTION: HOME -->
+<!-- PAGE: HOME -->
 <div id="page-home" class="page-section active">
-  <section class="relative min-h-[90vh] flex flex-col items-center justify-center -mt-[100px]">
-    <div class="hero-img"></div>
-    <div class="hero-overlay"></div>
-    <div class="relative z-10 text-center px-4 max-w-5xl pt-20">
-      <p class="text-[11px] font-bold tracking-[.4em] uppercase text-blue-400 mb-5" data-aos="fade-down">Belo Horizonte, MG &mdash; Desde 1989</p>
-      <h1 class="serif text-6xl md:text-[88px] leading-[1.05] mb-6" data-aos="fade-up" data-aos-delay="200">Automóveis<br><span class="italic shimmer">extraordinários.</span></h1>
-      <p class="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-10 font-light" data-aos="fade-up" data-aos-delay="400">Curadoria de veículos premium, superesportivos e blindados com 35 anos de tradição em BH.</p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center" data-aos="fade-up" data-aos-delay="600">
-        <a href="#estoque" class="btn-pri">Ver Estoque</a>
-        <a href="javascript:showPage('vender')" class="btn-sec">Vender meu carro</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ESTOQUE -->
-  <section class="py-28 px-6 md:px-10" id="estoque">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex justify-between items-end mb-14">
-        <h2 class="serif text-5xl md:text-6xl italic">O Garimpo.</h2>
-        <div class="hidden md:flex gap-2">
-           <button class="brand-pill active" onclick="quickFilter(this,'')">Todos</button>
-           <button class="brand-pill" onclick="quickFilter(this,'Porsche')">Porsche</button>
-           <button class="brand-pill" onclick="quickFilter(this,'Land Rover')">Land Rover</button>
+    <!-- HERO -->
+    <section class="relative h-screen flex flex-col items-center justify-center text-center px-4">
+        <div class="hero-img"></div>
+        <div class="hero-gradient"></div>
+        <div class="relative z-10 max-w-5xl">
+            <span class="text-blue-500 text-[10px] font-bold tracking-ultra uppercase mb-8 block" data-aos="fade-down">Belo Horizonte &bull; Desde 1989</span>
+            <h1 class="serif text-7xl md:text-[110px] leading-[0.9] mb-8" data-aos="fade-up" data-aos-delay="200">
+                Automóveis<br><span class="italic shimmer">Extraordinários.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed" data-aos="fade-up" data-aos-delay="400">
+                Uma curadoria impecável de veículos premium e superesportivos para quem não aceita o comum.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="600">
+                <a href="#estoque" class="btn-pri">Explorar Estoque</a>
+                <a href="javascript:showPage('vender')" class="btn-outline">Vender meu Veículo</a>
+            </div>
         </div>
-      </div>
-      <div id="carsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Renderizado dinamicamente ou estático como antes -->
-        <a href="https://www.deocar.com.br/veiculo/comprar-porsche-911-2024/1981" target="_blank" class="car-card block" data-brand="Porsche" data-aos="fade-up">
-          <div class="thumb mb-4">
-            <img src="https://www.deocar.com.br/public/upload/img-veiculos/1981-22338-1771600288.jpg?v=20022026121128" alt="Porsche 911">
-            <div class="hover-bar"><span class="text-[10px] font-bold tracking-widest opacity-70">Ver detalhes →</span></div>
-          </div>
-          <div class="flex justify-between px-1">
-            <div><p class="text-[10px] text-gray-500 uppercase font-bold mb-1">Porsche</p><h3 class="serif text-lg italic">911 Carrera GTS</h3></div>
-            <div class="text-right"><p class="text-sm font-bold">R$ 1.120.000</p><p class="text-[10px] text-gray-500 uppercase">2024 &bull; 5.000 km</p></div>
-          </div>
-        </a>
-        <a href="https://www.deocar.com.br/veiculo/comprar-honda-civic-2024/2061" target="_blank" class="car-card block" data-brand="Honda" data-aos="fade-up" data-aos-delay="100">
-          <div class="thumb mb-4">
-            <img src="https://www.deocar.com.br/public/upload/img-veiculos/2061-22344-1771607582.jpg?v=20022026021302" alt="Civic Type R">
-            <div class="hover-bar"><span class="text-[10px] font-bold tracking-widest opacity-70">Ver detalhes →</span></div>
-          </div>
-          <div class="flex justify-between px-1">
-            <div><p class="text-[10px] text-gray-500 uppercase font-bold mb-1">Honda</p><h3 class="serif text-lg italic">Civic Type R 2.0</h3></div>
-            <div class="text-right"><p class="text-sm font-bold">R$ 369.900</p><p class="text-[10px] text-gray-500 uppercase">2024 &bull; 17.000 km</p></div>
-          </div>
-        </a>
-        <a href="https://www.deocar.com.br/veiculo/comprar-land-rover-defender-2024/2028" target="_blank" class="car-card block" data-brand="Land Rover" data-aos="fade-up" data-aos-delay="200">
-          <div class="thumb mb-4">
-            <img src="https://www.deocar.com.br/public/upload/img-veiculos/2028-22340-1771600397.jpg?v=20022026121317" alt="Defender">
-            <div class="hover-bar"><span class="text-[10px] font-bold tracking-widest opacity-70">Ver detalhes →</span></div>
-          </div>
-          <div class="flex justify-between px-1">
-            <div><p class="text-[10px] text-gray-500 uppercase font-bold mb-1">Land Rover</p><h3 class="serif text-lg italic">Defender 130 X</h3></div>
-            <div class="text-right"><p class="text-sm font-bold">R$ 1.190.000</p><p class="text-[10px] text-gray-500 uppercase">2024 &bull; 14.000 km</p></div>
-          </div>
-        </a>
-      </div>
+        
+        <div class="absolute bottom-12 left-10 hidden xl:block" data-aos="fade-right" data-aos-delay="1000">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-px bg-blue-500"></div>
+                <span class="text-[9px] font-bold tracking-[0.3em] uppercase opacity-40">35 Anos de Tradição</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTOQUE SELECTO -->
+    <section class="py-32 px-6 md:px-10" id="estoque">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
+                <div>
+                    <span class="text-blue-500 text-[10px] font-bold tracking-widest uppercase mb-4 block">Current Inventory</span>
+                    <h2 class="serif text-5xl md:text-7xl">O Garimpo <span class="italic font-light opacity-50">Deocar</span></h2>
+                </div>
+                <div class="flex gap-2">
+                    <button class="px-6 py-3 border border-white/5 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition active-pill" onclick="filterBrand('', this)">Todos</button>
+                    <button class="px-6 py-3 border border-white/5 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition" onclick="filterBrand('Porsche', this)">Porsche</button>
+                    <button class="px-6 py-3 border border-white/5 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition" onclick="filterBrand('Land Rover', this)">Land Rover</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="grid-cars">
+                <!-- Car Card 1 -->
+                <div class="car-card group" data-brand="Porsche" data-aos="fade-up">
+                    <a href="https://www.deocar.com.br/veiculo/comprar-porsche-911-2024/1981" target="_blank">
+                        <div class="thumb mb-6 overflow-hidden">
+                            <img src="https://www.deocar.com.br/public/upload/img-veiculos/1981-22338-1771600288.jpg?v=20022026121128" alt="Porsche 911">
+                            <div class="absolute top-4 left-4 bg-white text-black px-3 py-1 text-[8px] font-black uppercase tracking-widest">Premium</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="serif text-2xl mb-1 group-hover:italic transition-all">911 Carrera GTS</h3>
+                                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500">Porsche &bull; 2024</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-medium mb-1">R$ 1.120.000</p>
+                                <p class="text-[10px] text-gray-500 uppercase tracking-widest">5.000 km</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Car Card 2 -->
+                <div class="car-card group" data-brand="Honda" data-aos="fade-up" data-aos-delay="100">
+                    <a href="https://www.deocar.com.br/veiculo/comprar-honda-civic-2024/2061" target="_blank">
+                        <div class="thumb mb-6 overflow-hidden">
+                            <img src="https://www.deocar.com.br/public/upload/img-veiculos/2061-22344-1771607582.jpg?v=20022026021302" alt="Civic Type R">
+                            <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 text-[8px] font-black uppercase tracking-widest">Sport</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="serif text-2xl mb-1 group-hover:italic transition-all">Civic Type R 2.0</h3>
+                                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500">Honda &bull; 2024</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-medium mb-1">R$ 369.900</p>
+                                <p class="text-[10px] text-gray-500 uppercase tracking-widest">17.000 km</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Car Card 3 -->
+                <div class="car-card group" data-brand="Land Rover" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://www.deocar.com.br/veiculo/comprar-land-rover-defender-2024/2028" target="_blank">
+                        <div class="thumb mb-6 overflow-hidden">
+                            <img src="https://www.deocar.com.br/public/upload/img-veiculos/2028-22340-1771600397.jpg?v=20022026121317" alt="Defender">
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="serif text-2xl mb-1 group-hover:italic transition-all">Defender 130 X</h3>
+                                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500">Land Rover &bull; 2024</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-medium mb-1">R$ 1.190.000</p>
+                                <p class="text-[10px] text-gray-500 uppercase tracking-widest">14.000 km</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-24 text-center">
+                <a href="https://www.deocar.com.br/veiculos/carro/todas-as-marca/todos-os-modelos/" target="_blank" class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition border-b border-white/10 pb-2">Ver Inventário Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+        <div class="marquee-content serif italic text-3xl font-light opacity-20">
+            <span>Porsche</span><span>&bull;</span><span>Land Rover</span><span>&bull;</span><span>Ferrari</span><span>&bull;</span><span>Lamborghini</span><span>&bull;</span><span>BMW</span><span>&bull;</span><span>Audi</span><span>&bull;</span><span>Mercedes-Benz</span><span>&bull;</span><span>Volvo</span><span>&bull;</span><span>Toyota</span><span>&bull;</span>
+            <span>Porsche</span><span>&bull;</span><span>Land Rover</span><span>&bull;</span><span>Ferrari</span><span>&bull;</span><span>Lamborghini</span><span>&bull;</span><span>BMW</span><span>&bull;</span><span>Audi</span><span>&bull;</span><span>Mercedes-Benz</span><span>&bull;</span><span>Volvo</span><span>&bull;</span><span>Toyota</span><span>&bull;</span>
+        </div>
     </div>
-  </section>
 </div>
 
-<!-- SECTION: VENDER (CONSIGNAÇÃO) -->
-<div id="page-vender" class="page-section px-6 md:px-10">
-  <div class="max-w-4xl mx-auto py-20">
-    <div class="grid md:grid-cols-2 gap-16 items-center">
-      <div data-aos="fade-right">
-        <p class="text-blue-500 text-[11px] font-bold tracking-widest uppercase mb-4">Consignação Premium</p>
-        <h2 class="serif text-6xl italic mb-8">Venda seu carro com quem entende.</h2>
-        <p class="text-gray-400 text-lg font-light leading-relaxed mb-6">Temos uma grande rede de clientes e parceiros que viabilizam a venda do seu veículo pela melhor oferta do mercado no menor prazo.</p>
-        <p class="text-gray-400 text-lg font-light leading-relaxed mb-10">Anunciamos constantemente nos principais portais e mídias, otimizando as oportunidades de negócios sem que você tenha trabalho.</p>
-        <a href="https://wa.me/5531995747309?text=Olá! Tenho interesse em consignar meu veículo com a Deocar." target="_blank" class="btn-pri">Falar com Consultor</a>
-      </div>
-      <div class="aspect-square bg-white/5 border border-white/10 p-2" data-aos="fade-left">
-        <img src="https://www.deocar.com.br/public/upload/img/imagem_principal_99.jpg?v=06082021055057" class="w-full h-full object-cover grayscale opacity-60">
-      </div>
-    </div>
-  </div>
+<!-- PAGE: VENDER -->
+<div id="page-vender" class="page-section">
+    <section class="pt-48 pb-32 px-10">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+            <div data-aos="fade-right">
+                <span class="text-blue-500 text-[10px] font-bold tracking-widest uppercase mb-6 block">Consignação Deocar</span>
+                <h2 class="serif text-6xl md:text-8xl italic mb-10 leading-tight">Valorizamos seu patrimônio.</h2>
+                <p class="text-gray-400 text-xl font-light leading-relaxed mb-8">Nossa rede exclusiva de colecionadores e entusiastas garante que seu veículo seja apresentado para os compradores certos.</p>
+                <ul class="space-y-6 mb-12">
+                    <li class="flex items-center gap-4 text-sm font-light text-gray-300">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Fotos profissionais em estúdio próprio
+                    </li>
+                    <li class="flex items-center gap-4 text-sm font-light text-gray-300">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Anúncios nos maiores portais do Brasil
+                    </li>
+                    <li class="flex items-center gap-4 text-sm font-light text-gray-300">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Curadoria técnica completa antes da venda
+                    </li>
+                </ul>
+                <a href="https://wa.me/5531995747309?text=Gostaria de consignar meu veículo." target="_blank" class="btn-pri">Solicitar Avaliação</a>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="aspect-[4/5] overflow-hidden grayscale brightness-75 border border-white/5">
+                    <img src="https://www.deocar.com.br/public/upload/img/imagem_principal_99.jpg?v=06082021055057" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-10 -left-10 bg-[#080808] border border-white/5 p-10 hidden xl:block">
+                    <p class="serif text-4xl italic mb-2">35 anos</p>
+                    <p class="text-[9px] font-bold tracking-widest uppercase opacity-40">De Tradição em BH</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
-<!-- SECTION: FINANCIAMENTO -->
-<div id="page-financiamento" class="page-section px-6 md:px-10">
-  <div class="max-w-5xl mx-auto py-20">
-    <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="serif text-6xl italic mb-6">Financiamento.</h2>
-      <p class="text-gray-400 font-light text-xl">Condições exclusivas para o mercado premium.</p>
-    </div>
-    <div class="bg-[#0a0a0c] border border-white/5 p-10 md:p-16" data-aos="fade-up">
-      <form onsubmit="event.preventDefault(); window.open('https://wa.me/5531995747309?text=Olá! Gostaria de fazer uma simulação de financiamento.', '_blank');" class="grid md:grid-cols-2 gap-8">
-        <div class="space-y-6">
-          <h4 class="text-[11px] font-bold tracking-widest uppercase text-gray-500">Dados do Veículo</h4>
-          <input type="text" placeholder="Marca e Modelo" class="w-full bg-white/5 border border-white/10 px-5 py-4 text-sm focus:border-blue-600 outline-none transition">
-          <input type="text" placeholder="Ano" class="w-full bg-white/5 border border-white/10 px-5 py-4 text-sm focus:border-blue-600 outline-none transition">
-          <input type="text" placeholder="Valor da Entrada" class="w-full bg-white/5 border border-white/10 px-5 py-4 text-sm focus:border-blue-600 outline-none transition">
+<!-- PAGE: BLINDAGEM -->
+<div id="page-blindagem" class="page-section">
+    <section class="pt-48 pb-32 px-10 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-blue-500 text-[10px] font-bold tracking-widest uppercase mb-6 block" data-aos="fade-down">Segurança de Alto Nível</span>
+            <h2 class="serif text-6xl md:text-9xl italic mb-12" data-aos="fade-up">Blindagem sem compromissos.</h2>
+            <p class="text-gray-400 text-xl font-light leading-relaxed mb-16" data-aos="fade-up" data-aos-delay="200">
+                Parcerias com as blindadoras mais renomadas do país para garantir a proteção Nível III-A com preservação total da dinâmica de direção.
+            </p>
+            <div class="grid md:grid-cols-3 gap-1 px-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="p-12 border border-white/5">
+                    <h3 class="serif text-2xl italic mb-4">Nível III-A</h3>
+                    <p class="text-xs text-gray-500 tracking-wider leading-relaxed">Proteção máxima permitida para uso civil no Brasil.</p>
+                </div>
+                <div class="p-12 border border-white/5">
+                    <h3 class="serif text-2xl italic mb-4">AGP Glass</h3>
+                    <p class="text-xs text-gray-500 tracking-wider leading-relaxed">Vidros de última geração com menor peso e maior nitidez.</p>
+                </div>
+                <div class="p-12 border border-white/5">
+                    <h3 class="serif text-2xl italic mb-4">Certificação</h3>
+                    <p class="text-xs text-gray-500 tracking-wider leading-relaxed">Garantia integral e documentação 100% regularizada.</p>
+                </div>
+            </div>
+            <div class="mt-20" data-aos="fade-up" data-aos-delay="600">
+                <a href="https://wa.me/5531995747309?text=Gostaria de saber sobre veículos blindados." target="_blank" class="btn-pri">Consultar Especialista</a>
+            </div>
         </div>
-        <div class="space-y-6">
-          <h4 class="text-[11px] font-bold tracking-widest uppercase text-gray-500">Seus Dados</h4>
-          <input type="text" placeholder="Nome Completo" class="w-full bg-white/5 border border-white/10 px-5 py-4 text-sm focus:border-blue-600 outline-none transition">
-          <input type="tel" placeholder="WhatsApp" class="w-full bg-white/5 border border-white/10 px-5 py-4 text-sm focus:border-blue-600 outline-none transition">
-          <button class="w-full btn-pri !py-4">Simular agora via WhatsApp</button>
-        </div>
-      </form>
-    </div>
-  </div>
+    </section>
 </div>
 
-<!-- SECTION: BLINDAGEM -->
-<div id="page-blindagem" class="page-section px-6 md:px-10">
-  <div class="max-w-4xl mx-auto py-20 text-center">
-    <div data-aos="fade-up">
-      <p class="text-blue-500 text-[11px] font-bold tracking-widest uppercase mb-4">Segurança Máxima</p>
-      <h2 class="serif text-6xl italic mb-8">Blindagem Premium.</h2>
-      <p class="text-gray-400 text-xl font-light leading-relaxed mb-12">Trabalhamos com as melhores blindadoras do país para garantir a sua proteção com a menor perda de performance possível. Veículos blindados com certificação e garantia Deocar.</p>
-      <div class="grid md:grid-cols-3 gap-8 text-left mb-16">
-        <div class="p-8 border border-white/5 bg-white/[0.02]">
-          <h3 class="serif text-2xl italic mb-3">Nível III-A</h3>
-          <p class="text-gray-500 text-sm">Proteção total contra armas de mão de todos os calibres.</p>
+<!-- PAGE: SOBRE -->
+<div id="page-sobre" class="page-section">
+    <section class="pt-48 pb-32 px-10">
+        <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+            <span class="text-blue-500 text-[10px] font-bold tracking-widest uppercase mb-10 block" data-aos="fade-down">Nossa Herança</span>
+            <h2 class="serif text-6xl md:text-[120px] leading-[0.85] italic mb-20" data-aos="fade-up">Desde 1989.</h2>
+            <div class="grid lg:grid-cols-2 gap-24 text-left">
+                <div data-aos="fade-right">
+                    <p class="text-gray-400 text-xl font-light leading-relaxed mb-8">
+                        Fundada em Belo Horizonte, a Deocar nasceu da visão de que um automóvel é muito mais que um meio de transporte — é uma obra de engenharia e uma extensão da personalidade.
+                    </p>
+                    <p class="text-gray-400 text-xl font-light leading-relaxed">
+                        Ao longo de 35 anos, construímos um legado baseado na transparência absoluta. Cada carro que entra em nosso showroom passa por um processo de seleção que ignora 95% do mercado. Só o excepcional fica.
+                    </p>
+                </div>
+                <div class="space-y-12" data-aos="fade-left">
+                    <div>
+                        <p class="serif text-5xl italic mb-4 text-blue-500">12k+</p>
+                        <p class="text-[9px] font-bold tracking-widest uppercase opacity-40">Clientes Atendidos</p>
+                    </div>
+                    <div>
+                        <p class="serif text-5xl italic mb-4 text-blue-500">100%</p>
+                        <p class="text-[9px] font-bold tracking-widest uppercase opacity-40">Veículos Periciados</p>
+                    </div>
+                    <div>
+                        <p class="serif text-5xl italic mb-4 text-blue-500">35</p>
+                        <p class="text-[9px] font-bold tracking-widest uppercase opacity-40">Anos de História</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="p-8 border border-white/5 bg-white/[0.02]">
-          <h3 class="serif text-2xl italic mb-3">Vidros AGP</h3>
-          <p class="text-gray-500 text-sm">Tecnologia avançada com menor peso e maior transparência.</p>
-        </div>
-        <div class="p-8 border border-white/5 bg-white/[0.02]">
-          <h3 class="serif text-2xl italic mb-3">Garantia</h3>
-          <p class="text-gray-500 text-sm">Acompanhamento completo de manutenção e documentação.</p>
-        </div>
-      </div>
-      <a href="https://wa.me/5531995747309?text=Olá! Gostaria de informações sobre veículos blindados." target="_blank" class="btn-pri">Consultar Disponibilidade</a>
-    </div>
-  </div>
-</div>
-
-<!-- SECTION: SOBRE -->
-<div id="page-sobre-page" class="page-section px-6 md:px-10">
-  <!-- Reutilizando o conteúdo do Sobre mas como página cheia -->
-  <div class="max-w-7xl mx-auto py-20 grid md:grid-cols-2 gap-20">
-    <div data-aos="fade-right">
-       <h2 class="serif text-7xl italic mb-10">A Herança Deocar.</h2>
-       <p class="text-gray-400 text-lg font-light leading-relaxed mb-6">Desde 1989, a Deocar é sinônimo de excelência no mercado automotivo mineiro. O que começou como uma paixão por carros tornou-se uma referência nacional em curadoria de veículos extraordinários.</p>
-       <p class="text-gray-400 text-lg font-light leading-relaxed">Nossa missão é simples: entregar não apenas um veículo, mas uma experiência de posse impecável. Selecionamos cada unidade como se fosse para nossa própria coleção.</p>
-    </div>
-    <div class="space-y-12" data-aos="fade-left">
-       <div class="flex gap-6"><span class="serif text-4xl italic text-blue-500">01</span><div><h4 class="font-bold tracking-widest uppercase text-[10px] mb-2">Curadoria</h4><p class="text-gray-500 text-sm">Cada carro passa por mais de 150 pontos de inspeção.</p></div></div>
-       <div class="flex gap-6"><span class="serif text-4xl italic text-blue-500">02</span><div><h4 class="font-bold tracking-widest uppercase text-[10px] mb-2">Transparência</h4><p class="text-gray-500 text-sm">Histórico completo e perícia cautelar 100% aprovada.</p></div></div>
-       <div class="flex gap-6"><span class="serif text-4xl italic text-blue-500">03</span><div><h4 class="font-bold tracking-widest uppercase text-[10px] mb-2">Pós-venda</h4><p class="text-gray-500 text-sm">Suporte contínuo para manutenção e futura troca.</p></div></div>
-    </div>
-  </div>
+    </section>
 </div>
 
 <!-- FOOTER -->
-<footer class="py-16 px-6 md:px-10 border-t border-white/5 bg-[#030305] mt-20">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-    <div>
-      <div class="h-8 mb-6"><img src="images/logo.webp" alt="Deocar 1989" class="h-full object-contain brightness-60"></div>
-      <p class="text-gray-600 text-sm font-light leading-relaxed">Multimarcas premium especializada em veículos de alto padrão em Belo Horizonte desde 1989.</p>
+<footer class="py-24 px-10 border-t border-white/5 bg-[#010101]">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-4 gap-20 mb-20">
+            <div class="lg:col-span-2">
+                <img src="images/logo.webp" alt="Deocar" class="h-6 mb-8 opacity-40">
+                <p class="text-gray-600 text-sm font-light max-w-sm leading-relaxed uppercase tracking-widest text-[10px]">Curadoria de automóveis extraordinários em Belo Horizonte desde 1989. Tradição, transparência e performance.</p>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500 mb-8">Navegação</p>
+                <ul class="space-y-4 text-[10px] font-bold tracking-widest uppercase">
+                    <li><a href="javascript:showPage('home')" class="hover:text-blue-500 transition">Início</a></li>
+                    <li><a href="javascript:showPage('vender')" class="hover:text-blue-500 transition">Vender</a></li>
+                    <li><a href="javascript:showPage('blindagem')" class="hover:text-blue-500 transition">Blindagem</a></li>
+                    <li><a href="javascript:showPage('sobre')" class="hover:text-blue-500 transition">Sobre</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500 mb-8">Sede</p>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-400 leading-loose">
+                    Carlos Prates, Belo Horizonte - MG<br>
+                    (31) 2555-9025<br>
+                    (31) 99574-7309
+                </p>
+            </div>
+        </div>
+        <div class="flex justify-between items-center pt-10 border-t border-white/5 opacity-20 text-[8px] font-bold tracking-[0.3em] uppercase">
+            <span>&copy; 2024 Deocar Veículos</span>
+            <span>Raízes Digital</span>
+        </div>
     </div>
-    <div>
-      <p class="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-5">Contato</p>
-      <div class="space-y-2 text-sm text-gray-500 font-light">
-        <p>📍 Carlos Prates · BH, MG</p>
-        <p><a href="tel:3125559025" class="hover:text-white transition">(31) 2555-9025</a></p>
-        <p><a href="https://wa.me/5531995747309" class="hover:text-white transition">(31) 99574-7309</a></p>
-      </div>
-    </div>
-    <div>
-      <p class="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-5">Navegação</p>
-      <div class="grid grid-cols-2 gap-2 text-sm text-gray-500 font-light">
-        <a href="javascript:showPage('home')" class="hover:text-white transition">Início</a>
-        <a href="javascript:showPage('vender')" class="hover:text-white transition">Vender</a>
-        <a href="javascript:showPage('financiamento')" class="hover:text-white transition">Financiamento</a>
-        <a href="javascript:showPage('blindagem')" class="hover:text-white transition">Blindagem</a>
-      </div>
-    </div>
-  </div>
 </footer>
 
-<a href="https://wa.me/5531995747309" target="_blank" class="wa"><svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/5531995747309" target="_blank" class="wa-float">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <script>
-AOS.init({duration:800,once:true,easing:'ease-out-cubic',offset:50});
+    AOS.init({ duration: 1200, once: true, easing: 'ease-out-cubic' });
 
-function showPage(pageId){
-  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-  document.getElementById('page-'+pageId).classList.add('active');
-  document.getElementById('link-'+pageId).classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
-  AOS.refresh();
-}
+    function showPage(pageId, anchor = null) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        
+        const target = document.getElementById('page-' + pageId);
+        target.classList.add('active');
+        
+        const link = document.getElementById('link-' + pageId);
+        if(link) link.classList.add('active');
 
-function quickFilter(btn, brand){
-  document.querySelectorAll('.brand-pill').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const cards = document.querySelectorAll('#carsGrid .car-card');
-  cards.forEach(c => {
-    const cb = c.dataset.brand.toLowerCase();
-    c.style.display = (!brand || cb.includes(brand.toLowerCase())) ? 'block' : 'none';
-  });
-}
+        if(anchor) {
+            setTimeout(() => {
+                const el = document.querySelector(anchor);
+                if(el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+            }, 100);
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        AOS.refresh();
+    }
+
+    function filterBrand(brand, btn) {
+        document.querySelectorAll('#estoque button').forEach(b => b.classList.remove('bg-white', 'text-black'));
+        btn.classList.add('bg-white', 'text-black');
+        
+        const cards = document.querySelectorAll('.car-card');
+        cards.forEach(c => {
+            if(!brand || c.dataset.brand === brand) {
+                c.style.display = 'block';
+            } else {
+                c.style.display = 'none';
+            }
+        });
+        AOS.refresh();
+    }
 </script>
 </body>
 </html>
