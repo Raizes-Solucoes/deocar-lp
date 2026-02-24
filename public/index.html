@@ -132,61 +132,11 @@
     <section class="py-32 px-6 md:px-10" id="estoque">
         <div class="max-w-7xl mx-auto">
             <h2 class="serif text-5xl md:text-7xl mb-20">O Garimpo <span class="italic font-light opacity-50">Deocar</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Car Card 1 -->
-                <div class="car-card group" data-aos="fade-up">
-                    <div onclick="showDetail('911')">
-                        <div class="thumb mb-6 overflow-hidden">
-                            <img src="https://www.deocar.com.br/public/upload/img-veiculos/1981-22338-1771600288.jpg?v=20022026121128" alt="Porsche 911">
-                        </div>
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="serif text-2xl mb-1 group-hover:italic transition-all">911 Carrera GTS</h3>
-                                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500">Porsche &bull; 2024</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-lg font-medium mb-1">R$ 1.120.000</p>
-                                <p class="text-[10px] text-gray-500 uppercase tracking-widest">5.000 km</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Car Card 2 -->
-                <div class="car-card group" data-aos="fade-up" data-aos-delay="100">
-                    <div onclick="showDetail('civic')">
-                        <div class="thumb mb-6 overflow-hidden">
-                            <img src="https://www.deocar.com.br/public/upload/img-veiculos/2061-22344-1771607582.jpg?v=20022026021302" alt="Civic Type R">
-                        </div>
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="serif text-2xl mb-1 group-hover:italic transition-all">Civic Type R 2.0</h3>
-                                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500">Honda &bull; 2024</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-lg font-medium mb-1">R$ 369.900</p>
-                                <p class="text-[10px] text-gray-500 uppercase tracking-widest">17.000 km</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Car Card 3 -->
-                <div class="car-card group" data-aos="fade-up" data-aos-delay="200">
-                    <div onclick="showDetail('defender')">
-                        <div class="thumb mb-6 overflow-hidden">
-                            <img src="https://www.deocar.com.br/public/upload/img-veiculos/2028-22340-1771600397.jpg?v=20022026121317" alt="Defender">
-                        </div>
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="serif text-2xl mb-1 group-hover:italic transition-all">Defender 130 X</h3>
-                                <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500">Land Rover &bull; 2024</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-lg font-medium mb-1">R$ 1.190.000</p>
-                                <p class="text-[10px] text-gray-500 uppercase tracking-widest">14.000 km</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="home-inventory">
+                <!-- Cars will be injected here -->
+            </div>
+            <div class="mt-20 text-center">
+                <a href="https://www.deocar.com.br/veiculos/carro/todas-as-marca/todos-os-modelos/" target="_blank" class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition border-b border-white/10 pb-2">Ver Inventário Completo</a>
             </div>
         </div>
     </section>
@@ -392,34 +342,46 @@
 </footer>
 
 <script>
-    const CAR_DATA = {
-        civic: {
-            title: "Honda Civic TYPE R 2.0", price: "R$ 369.900,00",
-            desc: "IPVA 2026 PAGO, 17.000km, 297cv, Câmbio manual 6 marchas, Championship White, Som Bose, Multimídia.",
-            specs: { "Ano": "2024/2024", "KM": "17.000", "Câmbio": "Manual", "Combustível": "Gasolina" },
-            features: ["Apple CarPlay", "Bancos Esportivos", "Ar Digital"],
-            images: ["https://www.deocar.com.br/public/upload/img-veiculos/2061-22344-1771607582.jpg", "https://www.deocar.com.br/public/upload/img-veiculos/2061-22198-1769623058.jpg"]
-        },
-        "911": {
-            title: "Porsche 911 Carrera GTS", price: "R$ 1.120.000,00",
-            desc: "Motor 3.0 Boxer Biturbo, 480cv, Câmbio PDK 8 marchas, 0-100km/h em 3.3s.",
-            specs: { "Ano": "2023/2024", "KM": "5.000", "Câmbio": "Automático PDK", "Combustível": "Gasolina" },
-            features: ["Sport Chrono", "Escape Esportivo", "Burmester"],
-            images: ["https://www.deocar.com.br/public/upload/img-veiculos/1981-22338-1771600288.jpg", "https://www.deocar.com.br/public/upload/img-veiculos/1981-21342-1763740260.jpg"]
-        },
-        defender: {
-            title: "Land Rover Defender 130 X", price: "R$ 1.190.000,00",
-            desc: "Motor 3.0 Turbodiesel, 300cv, 8 Lugares, Suspensão a Ar, Urban Wide Track.",
-            specs: { "Ano": "2024/2024", "KM": "14.000", "Câmbio": "Automático", "Combustível": "Diesel" },
-            features: ["8 Lugares", "Teto Solar", "Pivi Pro"],
-            images: ["https://www.deocar.com.br/public/upload/img-veiculos/2028-22340-1771600397.jpg", "https://www.deocar.com.br/public/upload/img-veiculos/2028-21264-1763059868.jpg"]
-        }
-    };
+    const CARS = [
+        { id: '911', brand: 'Porsche', model: '911 Carrera GTS 3.0 PDK', year: '2023/2024', km: '5.000', price: 'R$ 1.120.000,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/1981-22338-1771600288.jpg', desc: 'Motor 3.0 Boxer Biturbo, 480cv, Câmbio PDK 8 marchas, 0-100km/h em 3.3s.', specs: { "Câmbio": "PDK", "Combustível": "Gasolina", "Cor": "Crayon" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/1981-22338-1771600288.jpg", "https://www.deocar.com.br/public/upload/img-veiculos/1981-21342-1763740260.jpg"] },
+        { id: 'civic', brand: 'Honda', model: 'Civic TYPE R 2.0', year: '2024/2024', km: '17.000', price: 'R$ 369.900,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/2061-22344-1771607582.jpg', desc: 'IPVA 2026 PAGO, 17.000km, 297cv, Câmbio manual 6 marchas, Championship White.', specs: { "Câmbio": "Manual", "Combustível": "Gasolina", "Cor": "Branco" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/2061-22344-1771607582.jpg", "https://www.deocar.com.br/public/upload/img-veiculos/2061-22198-1769623058.jpg"] },
+        { id: 'defender', brand: 'Land Rover', model: 'Defender 130 X D300', year: '2024/2024', km: '14.000', price: 'R$ 1.190.000,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/2028-22340-1771600397.jpg', desc: 'Motor 3.0 Turbodiesel, 300cv, 8 Lugares, Suspensão a Ar, Urban Wide Track.', specs: { "Câmbio": "Automático", "Combustível": "Diesel", "Cor": "Preto" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/2028-22340-1771600397.jpg", "https://www.deocar.com.br/public/upload/img-veiculos/2028-21264-1763059868.jpg"] },
+        { id: 'cayenne25', brand: 'Porsche', model: 'Cayenne COUPE 3.0 V6 E-HYBRID', year: '2024/2025', km: '5.000', price: 'R$ 849.900,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/2046-22341-1771600458.jpg', desc: 'Porsche Cayenne Coupe E-Hybrid 2025 com apenas 5.000km rodados.', specs: { "Câmbio": "PDK", "Combustível": "Híbrido", "Cor": "Preto" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/2046-22341-1771600458.jpg"] },
+        { id: 'velar', brand: 'Land Rover', model: 'Range Rover Velar P400 HSE', year: '2023/2024', km: '15.000', price: 'R$ 475.900,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/2034-21300-1763560908.jpg', desc: 'Velar P400 HSE R-Dynamic PHEV com 15.000km.', specs: { "Câmbio": "Automático", "Combustível": "Híbrido", "Cor": "Cinza" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/2034-21300-1763560908.jpg"] },
+        { id: 'panamera', brand: 'Porsche', model: 'Panamera 4S PDK E-HYBRID', year: '2022/2022', km: '18.000', price: 'R$ 609.900,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/2033-21339-1763732165.jpg', desc: 'Panamera 4S PDK E-Hybrid em estado impecável.', specs: { "Câmbio": "PDK", "Combustível": "Híbrido", "Cor": "Branco" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/2033-21339-1763732165.jpg"] },
+        { id: 'xc90', brand: 'Volvo', model: 'XC90 T8 ULTRA PHEV', year: '2025/2026', km: '300', price: 'R$ 659.900,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/2029-21552-1765121505.jpg', desc: 'Volvo XC90 Ultra PHEV 2026 com apenas 300km rodados.', specs: { "Câmbio": "Automático", "Combustível": "Híbrido", "Cor": "Preto" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/2029-21552-1765121505.jpg"] },
+        { id: 'a3', brand: 'Audi', model: 'A3 PERFORMANCE SEDAN 2.0', year: '2024/2025', km: '4.000', price: 'R$ 269.900,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/2024-21245-1762975268.jpg', desc: 'Audi A3 Performance 2025 com 4.000km.', specs: { "Câmbio": "S-Tronic", "Combustível": "Gasolina", "Cor": "Azul" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/2024-21245-1762975268.jpg"] },
+        { id: 'sw4', brand: 'Toyota', model: 'SW4 DIAMOND 2.8 4X4', year: '2025/2025', km: '700', price: 'R$ 429.900,00', image: 'https://www.deocar.com.br/public/upload/img-veiculos/1995-22339-1771600340.jpg', desc: 'Toyota SW4 Diamond 2025 com apenas 700km.', specs: { "Câmbio": "Automático", "Combustível": "Diesel", "Cor": "Branco" }, images: ["https://www.deocar.com.br/public/upload/img-veiculos/1995-22339-1771600340.jpg"] }
+    ];
+
+    function renderInventory() {
+        const grid = document.getElementById('home-inventory');
+        grid.innerHTML = CARS.map((car, idx) => `
+            <div class="car-card group" data-aos="fade-up" data-aos-delay="${idx * 50}">
+                <div onclick="showDetail('${car.id}')">
+                    <div class="thumb mb-6 overflow-hidden">
+                        <img src="${car.image}" alt="${car.model}">
+                        ${idx === 0 ? '<div class="absolute top-4 left-4 bg-white text-black px-3 py-1 text-[8px] font-black uppercase tracking-widest">Premium</div>' : ''}
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="serif text-2xl mb-1 group-hover:italic transition-all">${car.model.split(' ').slice(0, 3).join(' ')}</h3>
+                            <p class="text-[10px] font-bold tracking-widest uppercase text-gray-500">${car.brand} &bull; ${car.year.split('/')[0]}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-medium mb-1">${car.price.split(',')[0]}</p>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-widest">${car.km} km</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
 
     window.addEventListener('load', () => {
+        renderInventory();
         setTimeout(() => {
-            const preloader = document.getElementById('preloader');
-            preloader.classList.add('fade-out');
+            document.getElementById('preloader').classList.add('fade-out');
             AOS.init({ duration: 1200, once: true, easing: 'ease-out-cubic' });
         }, 2200);
     });
@@ -433,11 +395,12 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
         AOS.refresh();
     }
+
     function showDetail(carId){
-        const car = CAR_DATA[carId];
+        const car = CARS.find(c => c.id === carId);
         document.getElementById('detail-content').innerHTML = `
             <div data-aos="fade-right"><div class="grid gap-4">${car.images.map(img => `<img src="${img}" class="w-full grayscale brightness-75 hover:grayscale-0 transition-all duration-700 border border-white/5">`).join('')}</div></div>
-            <div data-aos="fade-left"><span class="text-blue-500 text-[10px] font-bold tracking-widest uppercase mb-4 block">${car.specs.Ano} &bull; ${car.specs.KM} KM</span><h2 class="serif text-5xl md:text-7xl mb-6">${car.title}</h2><p class="text-3xl font-light mb-12">${car.price}</p><p class="text-gray-400 font-light leading-relaxed mb-12">${car.desc}</p><div class="grid grid-cols-2 gap-y-4 text-sm font-light border-y border-white/5 py-8 mb-12">${Object.entries(car.specs).map(([k,v]) => `<div class="text-gray-500">${k}</div><div>${v}</div>`).join('')}</div><a href="https://wa.me/5531995747309?text=Interesse: ${car.title}" target="_blank" class="btn-pri block w-full">Negociar este veículo</a></div>`;
+            <div data-aos="fade-left"><span class="text-blue-500 text-[10px] font-bold tracking-widest uppercase mb-4 block">${car.year} &bull; ${car.km} KM</span><h2 class="serif text-5xl md:text-7xl mb-6">${car.brand} ${car.model}</h2><p class="text-3xl font-light mb-12">${car.price}</p><p class="text-gray-400 font-light leading-relaxed mb-12">${car.desc}</p><div class="grid grid-cols-2 gap-y-4 text-sm font-light border-y border-white/5 py-8 mb-12">${Object.entries(car.specs).map(([k,v]) => `<div class="text-gray-500">${k}</div><div>${v}</div>`).join('')}</div><a href="https://wa.me/5531995747309?text=Interesse: ${car.brand} ${car.model}" target="_blank" class="btn-pri block w-full">Negociar este veículo</a></div>`;
         showPage('detail');
     }
 </script>
