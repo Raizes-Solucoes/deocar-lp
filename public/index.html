@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deocar Veículos | Experiência Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #fff; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .hero-gradient { background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,1) 100%); }
+        .text-shimmer {
+            background: linear-gradient(90deg, #fff 0%, #a1a1a1 50%, #fff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer { to { background-position: 200% center; } }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 glass">
+        <div class="text-2xl font-bold tracking-tighter uppercase italic">DEO<span class="text-blue-600">CAR</span></div>
+        <div class="hidden md:flex gap-8 text-xs font-semibold tracking-widest uppercase">
+            <a href="#" class="hover:text-blue-500 transition">Estoque</a>
+            <a href="#" class="hover:text-blue-500 transition">Venda seu Carro</a>
+            <a href="#" class="hover:text-blue-500 transition">Personal Finder</a>
+            <a href="#" class="hover:text-blue-500 transition">Sobre</a>
+        </div>
+        <button class="bg-white text-black px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition">Contato</button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Placeholder para vídeo/imagem de impacto (Porsche/911) -->
+            <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center scale-110"></div>
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl">
+            <h2 class="text-xs font-bold tracking-[0.3em] uppercase mb-4 text-blue-500 opacity-80">Seja bem-vindo à Deocar</h2>
+            <h1 class="serif text-6xl md:text-8xl mb-8 leading-tight">Conduzindo a <span class="italic text-shimmer">Excelência</span>.</h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">Curadoria exclusiva de automóveis premium, superesportivos e blindados em Belo Horizonte.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button class="bg-blue-600 px-10 py-4 rounded-none font-bold uppercase tracking-widest text-sm hover:bg-blue-700 transition">Ver Estoque</button>
+                <button class="border border-white/20 px-10 py-4 rounded-none font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition backdrop-blur-sm">Personal Finder</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-20 px-8 border-y border-white/5 bg-[#080808]">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div>
+                <div class="text-4xl serif mb-2">20+</div>
+                <div class="text-[10px] uppercase tracking-widest text-gray-500">Anos de Mercado</div>
+            </div>
+            <div>
+                <div class="text-4xl serif mb-2">10k+</div>
+                <div class="text-[10px] uppercase tracking-widest text-gray-500">Clientes Atendidos</div>
+            </div>
+            <div>
+                <div class="text-4xl serif mb-2">100%</div>
+                <div class="text-[10px] uppercase tracking-widest text-gray-500">Veículos Periciados</div>
+            </div>
+            <div>
+                <div class="text-4xl serif mb-2">BH</div>
+                <div class="text-[10px] uppercase tracking-widest text-gray-500">Sede Própria</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid Preview (Inspirado na Avantgarde/Spice) -->
+    <section class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-xs font-bold tracking-[0.3em] uppercase text-blue-500 mb-4">Destaques</h2>
+                    <h3 class="serif text-5xl">O Garimpo Deocar.</h3>
+                </div>
+                <a href="#" class="text-xs font-bold uppercase tracking-widest border-b border-blue-600 pb-2 hover:text-blue-500 transition">Ver todos os 42 veículos</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 (Porsche) -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-black/80 backdrop-blur px-3 py-1 text-[10px] font-bold uppercase tracking-tighter">Híbrido</div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-xs text-gray-500 uppercase font-bold tracking-widest mb-1">Porsche</h4>
+                            <h5 class="text-xl serif italic">911 Carrera GTS</h5>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-bold">R$ 1.120.000</div>
+                            <div class="text-[10px] text-gray-500 uppercase">2024 • 5.000km</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Defender) -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1623910540842-2b634863f64c?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-blue-600 px-3 py-1 text-[10px] font-bold uppercase tracking-tighter">Full Spec</div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-xs text-gray-500 uppercase font-bold tracking-widest mb-1">Land Rover</h4>
+                            <h5 class="text-xl serif italic">Defender 130 X</h5>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-bold">R$ 1.190.000</div>
+                            <div class="text-[10px] text-gray-500 uppercase">2024 • 14.000km</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Civic Type R) -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1707923761754-07d468132e0e?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-xs text-gray-500 uppercase font-bold tracking-widest mb-1">Honda</h4>
+                            <h5 class="text-xl serif italic">Civic Type R</h5>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-bold">R$ 369.900</div>
+                            <div class="text-[10px] text-gray-500 uppercase">2024 • 17.000km</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concierge / Personal Finder -->
+    <section class="py-32 px-8 bg-blue-600 text-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
+            <div class="flex-1">
+                <h2 class="text-xs font-bold tracking-[0.3em] uppercase mb-6 opacity-70">Experiência Tailor-made</h2>
+                <h3 class="serif text-6xl mb-8 leading-tight italic">Não encontrou o que buscava?</h3>
+                <p class="text-blue-100 text-xl font-light mb-12">Ativamos nossa rede global de contatos para encontrar a configuração exata do veículo que você deseja. De supercarros a blindados de luxo.</p>
+                <div class="flex gap-4">
+                    <button class="bg-white text-blue-600 px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-gray-100 transition">Solicitar Consultoria</button>
+                </div>
+            </div>
+            <div class="flex-1 hidden md:block opacity-30">
+                <div class="text-[12rem] serif italic font-bold leading-none select-none">DEOCAR</div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
