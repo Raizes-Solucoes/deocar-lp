@@ -87,14 +87,41 @@
         transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #search-drawer.active { height: auto; opacity: 1; padding: 60px 0; }
-    .search-input { 
-        background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); 
-        padding: 1.2rem; color: #fff; font-size: 0.75rem; outline: none; width: 100%;
-        appearance: none; -webkit-appearance: none; border-radius: 0;
+        /* CUSTOM DROPDOWN */
+    .custom-select { position: relative; width: 100%; cursor: pointer; }
+    .select-selected {
+        background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+        padding: 1.2rem; color: #fff; font-size: 0.75rem; 
+        display: flex; justify-content: space-between; align-items: center;
         transition: all 0.3s ease;
     }
-    .search-input:focus { border-color: var(--blue); background: rgba(255,255,255,0.05); }
-    .search-input option { background: #111; color: #fff; padding: 10px; }
+    .custom-select:hover .select-selected { border-color: rgba(255,255,255,0.2); }
+    .custom-select.active .select-selected { border-color: var(--blue); }
+    
+    .select-items {
+        position: absolute; top: 100%; left: 0; right: 0; z-index: 99;
+        background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.08); margin-top: 5px;
+        opacity: 0; visibility: hidden; transform: translateY(-10px);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .custom-select.active .select-items { opacity: 1; visibility: visible; transform: translateY(0); }
+    
+    .select-items div {
+        color: #fff; padding: 1rem 1.2rem; font-size: 0.7rem;
+        transition: all 0.2s ease; border-bottom: 1px solid rgba(255,255,255,0.02);
+    }
+    .select-items div:last-child { border-bottom: none; }
+    .select-items div:hover { background: rgba(37, 99, 235, 0.15); color: #fff; padding-left: 1.5rem; }
+    
+    .select-arrow { 
+        width: 10px; height: 6px; fill: none; stroke: rgba(255,255,255,0.3); stroke-width: 1.5;
+        transition: transform 0.4s ease;
+    }
+    .custom-select.active .select-arrow { transform: rotate(180deg); stroke: var(--blue); }
+
+    
+    
     .search-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(255,255,255,0.3); margin-bottom: 14px; display: block; }
 </style>
 </head>
@@ -134,40 +161,55 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-10 items-end">
             <div class="w-full">
                 <span class="search-label">Segmento</span>
-                <select class="search-input">
-                    <option value="" disabled selected>Selecionar</option>
-                    <option>Automóveis</option>
-                    <option>Motocicletas</option>
-                    <option>Blindados</option>
-                </select>
+                <div class="custom-select" id="select-segmento">
+                    <div class="select-selected">
+                        <span>Selecionar</span>
+                        <svg class="select-arrow" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+                    </div>
+                    <div class="select-items">
+                        <div>Automóveis</div>
+                        <div>Motocicletas</div>
+                        <div>Blindados</div>
+                    </div>
+                </div>
             </div>
             <div class="w-full">
                 <span class="search-label">Marcas</span>
-                <select class="search-input">
-                    <option value="" disabled selected>Selecionar</option>
-                    <option>Porsche</option>
-                    <option>Ferrari</option>
-                    <option>Land Rover</option>
-                    <option>BMW</option>
-                    <option>Audi</option>
-                </select>
+                <div class="custom-select" id="select-marcas">
+                    <div class="select-selected">
+                        <span>Todas as Marcas</span>
+                        <svg class="select-arrow" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+                    </div>
+                    <div class="select-items">
+                        <div>Porsche</div>
+                        <div>Ferrari</div>
+                        <div>Land Rover</div>
+                        <div>BMW</div>
+                        <div>Audi</div>
+                    </div>
+                </div>
             </div>
             <div class="w-full">
                 <span class="search-label">Modelos</span>
-                <select class="search-input">
-                    <option value="" disabled selected>Selecionar</option>
-                    <option>Todos os Modelos</option>
-                    <option>911 Carrera</option>
-                    <option>Cayenne</option>
-                    <option>Defender 110</option>
-                    <option>Range Rover Velar</option>
-                </select>
+                <div class="custom-select" id="select-modelos">
+                    <div class="select-selected">
+                        <span>Todos os Modelos</span>
+                        <svg class="select-arrow" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+                    </div>
+                    <div class="select-items">
+                        <div>911 Carrera</div>
+                        <div>Cayenne</div>
+                        <div>Defender 110</div>
+                        <div>Range Rover Velar</div>
+                    </div>
+                </div>
             </div>
             <div class="w-full">
                 <button onclick="toggleSearch()" class="btn-pri w-full !py-4 opacity-90 hover:opacity-100">Filtrar</button>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
@@ -447,7 +489,33 @@
         }, 2200);
     });
 
-        function toggleSearch() {
+        
+    // Custom Dropdown Logic
+    document.querySelectorAll('.custom-select').forEach(select => {
+        const selected = select.querySelector('.select-selected');
+        const items = select.querySelector('.select-items');
+        
+        selected.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = select.classList.contains('active');
+            // Close all others
+            document.querySelectorAll('.custom-select').forEach(s => s.classList.remove('active'));
+            if (!isActive) select.classList.add('active');
+        });
+
+        items.querySelectorAll('div').forEach(item => {
+            item.addEventListener('click', () => {
+                selected.querySelector('span').textContent = item.textContent;
+                select.classList.remove('active');
+            });
+        });
+    });
+
+    // Close dropdowns on outside click
+    window.addEventListener('click', () => {
+        document.querySelectorAll('.custom-select').forEach(s => s.classList.remove('active'));
+    });
+    function toggleSearch() {
         document.getElementById('search-drawer').classList.toggle('active');
     }
 
